@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.cxy.community.entity.Admin</OriginalElement>
+  <nodes>
+    <node x="672.0" y="105.0">com.cxy.community.service.AdminService</node>
+    <node x="226.0" y="266.0">com.cxy.community.controller.AdminController</node>
+    <node x="724.0" y="0.0">org.springframework.stereotype.Service</node>
+    <node x="13.333333333333258" y="287.66666666666674">com.cxy.community.entity.Admin</node>
+    <node x="-160.66666666666674" y="287.66666666666674">com.cxy.community.entity.User</node>
+    <node x="546.6666666666664" y="275.66666666666663">org.apache.ibatis.annotations.Mapper</node>
+    <node x="236.0" y="0.0">org.springframework.web.bind.annotation.RequestMapping</node>
+    <node x="491.6666666666664" y="355.66666666666663">com.cxy.community.mapper.AdminMapper</node>
+    <node x="467.0" y="80.5">org.springframework.web.bind.annotation.RestController</node>
+    <node x="0.0" y="11.5">org.springframework.web.bind.annotation.CrossOrigin</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.cxy.community.controller.AdminController" target="org.springframework.web.bind.annotation.RestController">
+      <point x="77.0" y="-120.0" />
+      <point x="418.5" y="241.0" />
+      <point x="547.0" y="241.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="com.cxy.community.controller.AdminController" target="org.springframework.web.bind.annotation.RequestMapping">
+      <point x="0.0" y="-120.0" />
+      <point x="0.0" y="108.0" />
+    </edge>
+    <edge source="com.cxy.community.service.AdminService" target="org.springframework.stereotype.Service">
+      <point x="0.0" y="-120.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="com.cxy.community.controller.AdminController" target="org.springframework.web.bind.annotation.CrossOrigin">
+      <point x="-77.0" y="-120.0" />
+      <point x="264.5" y="241.0" />
+      <point x="108.0" y="241.0" />
+      <point x="0.0" y="96.5" />
+    </edge>
+    <edge source="com.cxy.community.mapper.AdminMapper" target="org.apache.ibatis.annotations.Mapper">
+      <point x="0.0" y="-108.5" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9" x="301.44444444444434" y="320.22222222222223" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

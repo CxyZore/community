@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cxy.community.mapper.AdminMapper">
+    <resultMap type="com.cxy.community.entity.Admin" id="AdminMap">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+        <result property="roleID" column="role_id" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap type="com.cxy.community.entity.Role" id="RoleMap">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="role" column="name" jdbcType="VARCHAR"/>
+        <result property="introduce" column="account" jdbcType="VARCHAR"/>
+        <result property="time" column="password" jdbcType="VARCHAR"/>
+        <result property="state" column="avatar" />
+        <result property="level" column="role_id" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="addAdmin" parameterType="com.cxy.community.entity.Admin">
+        insert into administrator
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="account != null">
+                account,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            avatar,role_id,phone,email
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id, jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name, jdbcType=VARCHAR},
+            </if>
+            #{account, jdbcType=VARCHAR},
+            #{password, jdbcType=VARCHAR},
+            #{avatar, jdbcType=VARCHAR},
+            #{roleID, jdbcType=VARCHAR},
+            #{phone, jdbcType=VARCHAR},
+            #{email, jdbcType=VARCHAR}
+        </trim>
+    </insert>
+
+    <delete id="removeAdmin" parameterType="com.cxy.community.entity.Admin">
+		delete from administrator where id = #{id,jdbcType=VARCHAR}
+	</delete>
+
+    <update id="changeAdmin" parameterType="com.cxy.community.entity.Admin">
+        update administrator
+        <trim prefix="set" suffixOverrides=",">
+            name = #{name,jdbcType=VARCHAR},
+            account = #{account, jdbcType=VARCHAR},
+            password = #{password, jdbcType=VARCHAR},
+            avatar = #{avatar, jdbcType=VARCHAR},
+            role_id = #{roleID, jdbcType=VARCHAR},
+            phone = #{phone, jdbcType=VARCHAR},
+            email = #{email, jdbcType=VARCHAR}
+        </trim>
+        where id = #{id, jdbcType=VARCHAR}
+    </update>
+
+    <select id="getAllAdmin" resultType="com.cxy.community.entity.Admin">
+		SELECT * FROM administrator
+	</select>
+
+    <insert id="addRole" parameterType="com.cxy.community.entity.Role">
+        insert into role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="role != null">
+                role,
+            </if>
+            introduce,time,state,level
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id, jdbcType=VARCHAR},
+            </if>
+            <if test="role != null">
+                #{role, jdbcType=VARCHAR},
+            </if>
+            #{introduce, jdbcType=VARCHAR},
+            #{time, jdbcType=VARCHAR},
+            #{state, jdbcType=tinyint},
+            #{level, jdbcType=VARCHAR}
+        </trim>
+    </insert>
+
+    <delete id="removeRole" parameterType="com.cxy.community.entity.Role">
+		delete from role where id = #{id,jdbcType=VARCHAR}
+	</delete>
+
+    <update id="changeRole" parameterType="com.cxy.community.entity.Role">
+        update role
+        <trim prefix="set" suffixOverrides=",">
+            id = #{id,jdbcType=VARCHAR},
+            role = #{role, jdbcType=VARCHAR},
+            introduce = #{introduce, jdbcType=VARCHAR},
+            time = #{time, jdbcType=VARCHAR},
+            state = #{state, jdbcType=tinyint},
+            level = #{level, jdbcType=VARCHAR}
+        </trim>
+        where id = #{id, jdbcType=VARCHAR}
+    </update>
+
+    <select id="getAllRole" resultType="com.cxy.community.entity.Role">
+		SELECT * FROM administrator
+	</select>
+
+
+</mapper>

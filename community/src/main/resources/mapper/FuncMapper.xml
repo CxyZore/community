@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cxy.community.mapper.FuncMapper">
+    <resultMap type="com.cxy.community.entity.Message" id="MessageMap">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="account" column="user_account" jdbcType="VARCHAR"/>
+        <result property="time" column="time" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="reply" column="reply" jdbcType="VARCHAR"/>
+        <result property="state" column="state" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getAllMessage" resultType="com.cxy.community.entity.Message">
+		select message.id,name,user_account account,message.time,content,reply,state
+        FROM message
+        JOIN user
+        where message.user_account = user.account;
+	</select>
+
+    <delete id="removeMessage" parameterType="com.cxy.community.entity.Message">
+		delete from message where id = #{id,jdbcType=VARCHAR}
+	</delete>
+
+    <update id="reply" parameterType="com.cxy.community.entity.Message">
+        update message
+        <trim prefix="set" suffixOverrides=",">
+            reply = #{content, jdbcType=VARCHAR}
+        </trim>
+        where id = #{id, jdbcType=VARCHAR}
+    </update>
+
+    <resultMap type="com.cxy.community.entity.Recommend" id="RecommendMap">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="contentTitle" column="contentTitle" jdbcType="VARCHAR"/>
+        <result property="author" column="author" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="level" column="level" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getSuperRecommend" resultType="com.cxy.community.entity.Recommend">
+		SELECT content_ID, title, author, recommend.type,`level`
+		FROM recommend JOIN content
+		WHERE content_ID = id
+		ORDER BY level DESC
+	</select>
+
+    <select id="getRecommend" resultType="com.cxy.community.entity.Recommend">
+		SELECT * FROM content
+		WHERE type = #{type, jdbcType=VARCHAR}
+		ORDER BY hot DESC LIMIT 5
+	</select>
+
+    <insert id="addSuperRecommend" parameterType="com.cxy.community.entity.Recommend">
+        insert into content
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id, jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{sort, jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="changeSort" parameterType="com.cxy.community.entity.Recommend">
+        update recommend
+        <trim prefix="set" suffixOverrides=",">
+            sort = #{sort,jdbcType=VARCHAR}
+        </trim>
+        where id = #{id, jdbcType=VARCHAR}
+    </update>
+
+    <delete id="removeRecommend" parameterType="com.cxy.community.entity.Recommend">
+		delete from Recommend where id = #{id,jdbcType=VARCHAR}
+	</delete>
+
+    <resultMap type="com.cxy.community.entity.Comments" id="CommentsMap">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="oppositeSide" column="oppositeSide" jdbcType="VARCHAR"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="like" column="time" jdbcType="INTEGER"/>
+        <result property="time" column="time" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getAllComments" resultType="com.cxy.community.entity.Comments">
+		SELECT t1.id, account, t1.name, t1.opposite_side oppositeSide, content.title, t1.content, t1.like, t1.time, t1.type FROM content,
+        (SELECT comments.id,comments.name account, u1.name,opposite_side,content,`like`,time,type
+        FROM Comments,user u1
+        WHERE comments.name = u1.id) t1
+        WHERE content.id = t1.opposite_side
+	</select>
+
+    <delete id="removeComments" parameterType="com.cxy.community.entity.Comments">
+		delete from Comments
+		where id = #{id,jdbcType=VARCHAR}
+		and opposite_side = #{oppositeSide,jdbcType=VARCHAR}
+	</delete>
+
+    <resultMap type="com.cxy.community.entity.Attention" id="AttentionMap">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="accountName" column="accountName" jdbcType="VARCHAR"/>
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="otherAccountName" column="otherAccountName" jdbcType="VARCHAR"/>
+        <result property="otherAccount" column="otherAccount" jdbcType="VARCHAR"/>
+        <result property="time" column="time" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getAllAttention" resultType="com.cxy.community.entity.Attention">
+		SELECT attention.id, user.name accountName, attention.account,
+		        u2.`name` otherAccountName,other_account otherAccount,time
+		FROM `attention`,user, user u2
+        WHERE `user`.account = attention.account
+        AND u2.account = attention.other_account
+	</select>
+
+    <delete id="removeAttention" parameterType="com.cxy.community.entity.Attention">
+		delete from Attention
+		where account = #{id,jdbcType=VARCHAR}
+		and other_account = #{otherAccount,jdbcType=VARCHAR}
+	</delete>
+
+    <resultMap type="com.cxy.community.entity.Collect" id="CollectMap">
+<!--        <id property="account" column="account" jdbcType="VARCHAR"/>-->
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="articID" column="articID" jdbcType="VARCHAR"/>
+        <result property="arctic" column="arctic" jdbcType="VARCHAR"/>
+        <result property="time" column="time" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getAllCollect" resultType="com.cxy.community.entity.Collect">
+		SELECT collect.account account, `name`, title arctic, artic_ID articID, collect.time
+		FROM collect,`user`,content
+		WHERE collect.account = `user`.account
+		AND collect.artic_ID = content.id
+	</select>
+
+    <delete id="removeCollect" parameterType="com.cxy.community.entity.Collect">
+		delete from Collect
+		where account = #{account,jdbcType=VARCHAR}
+		and artic_ID = #{arcticID,jdbcType=VARCHAR}
+	</delete>
+
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.cxy.community.controller.FuncController</OriginalElement>
+  <nodes>
+    <node x="169.0" y="266.0">com.cxy.community.controller.FuncController</node>
+    <node x="502.33333333333326" y="387.0">com.cxy.community.entity.Recommend</node>
+    <node x="672.0" y="80.0">com.cxy.community.mapper.FuncMapper</node>
+    <node x="-174.5" y="152.33333333333337">org.springframework.stereotype.Service</node>
+    <node x="775.0" y="0.0">org.apache.ibatis.annotations.Mapper</node>
+    <node x="416.0" y="0.0">org.springframework.web.bind.annotation.RequestMapping</node>
+    <node x="-258.0" y="257.33333333333337">com.cxy.community.service.FuncService</node>
+    <node x="236.0" y="80.5">org.springframework.web.bind.annotation.RestController</node>
+    <node x="0.0" y="11.5">org.springframework.web.bind.annotation.CrossOrigin</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.cxy.community.controller.FuncController" target="org.springframework.web.bind.annotation.RequestMapping">
+      <point x="98.0" y="-143.0" />
+      <point x="414.0" y="241.0" />
+      <point x="521.5" y="241.0" />
+      <point x="0.0" y="108.0" />
+    </edge>
+    <edge source="com.cxy.community.mapper.FuncMapper" target="org.apache.ibatis.annotations.Mapper">
+      <point x="0.0" y="-177.5" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.cxy.community.service.FuncService" target="org.springframework.stereotype.Service">
+      <point x="0.0" y="-143.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="com.cxy.community.controller.FuncController" target="org.springframework.web.bind.annotation.CrossOrigin">
+      <point x="-98.0" y="-143.0" />
+      <point x="218.0" y="241.0" />
+      <point x="108.0" y="241.0" />
+      <point x="0.0" y="96.5" />
+    </edge>
+    <edge source="com.cxy.community.controller.FuncController" target="org.springframework.web.bind.annotation.RestController">
+      <point x="0.0" y="-143.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8" x="365.2797619047624" y="300.75" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.cxy.community.mapper.UserMapper</OriginalElement>
+  <nodes>
+    <node x="-162.22222222222217" y="292.55555555555554">com.cxy.community.service.UserService</node>
+    <node x="-116.22222222222217" y="187.55555555555551">org.springframework.stereotype.Service</node>
+    <node x="555.1111111111111" y="299.77777777777777">com.cxy.community.mapper.UserMapper</node>
+    <node x="-302.2222222222222" y="25.33333333333337">com.cxy.community.entity.User</node>
+    <node x="637.6111111111111" y="219.77777777777777">org.apache.ibatis.annotations.Mapper</node>
+    <node x="180.0" y="0.0">org.springframework.web.bind.annotation.RequestMapping</node>
+    <node x="178.0" y="266.0">com.cxy.community.controller.UserController</node>
+    <node x="0.0" y="80.5">org.springframework.web.bind.annotation.RestController</node>
+    <node x="411.0" y="11.5">org.springframework.web.bind.annotation.CrossOrigin</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.cxy.community.service.UserService" target="org.springframework.stereotype.Service">
+      <point x="0.0" y="-97.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="com.cxy.community.controller.UserController" target="org.springframework.web.bind.annotation.RestController">
+      <point x="-71.66666666666669" y="-85.5" />
+      <point x="213.83333333333331" y="241.0" />
+      <point x="80.0" y="241.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="com.cxy.community.mapper.UserMapper" target="org.apache.ibatis.annotations.Mapper">
+      <point x="0.0" y="-97.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.cxy.community.controller.UserController" target="org.springframework.web.bind.annotation.CrossOrigin">
+      <point x="71.66666666666669" y="-85.5" />
+      <point x="357.1666666666667" y="241.0" />
+      <point x="519.0" y="241.0" />
+      <point x="0.0" y="96.5" />
+    </edge>
+    <edge source="com.cxy.community.controller.UserController" target="org.springframework.web.bind.annotation.RequestMapping">
+      <point x="0.0" y="-85.5" />
+      <point x="0.0" y="108.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9" x="239.36111111111126" y="236.22222222222223" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

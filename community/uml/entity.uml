@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.cxy.community.entity.Admin</OriginalElement>
+  <nodes>
+    <node x="0.0" y="330.0">com.cxy.community.entity.Comments</node>
+    <node x="189.0" y="568.0">com.cxy.community.entity.Collect</node>
+    <node x="0.0" y="0.0">com.cxy.community.entity.Content</node>
+    <node x="163.0" y="0.0">com.cxy.community.entity.Label</node>
+    <node x="196.0" y="330.0">com.cxy.community.entity.Message</node>
+    <node x="0.0" y="568.0">com.cxy.community.entity.Recommend</node>
+    <node x="620.0" y="330.0">com.cxy.community.entity.Role</node>
+    <node x="387.0" y="330.0">com.cxy.community.entity.Attention</node>
+    <node x="511.0" y="0.0">com.cxy.community.entity.Admin</node>
+    <node x="337.0" y="0.0">com.cxy.community.entity.User</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.8" x="245.125" y="438.75" />
+  <SelectedNodes>
+    <node>com.cxy.community.entity.Admin</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

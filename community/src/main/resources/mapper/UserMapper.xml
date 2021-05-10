@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cxy.community.mapper.UserMapper">
+
+    <resultMap type="com.cxy.community.entity.User" id="UserMap">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="introduce" column="introduce" jdbcType="VARCHAR"/>
+        <result property="birthday" column="birthday" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getPassword" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT password FROM User WHERE account = #{account}
+	</select>
+
+    <select id="getUser" parameterType="com.cxy.community.entity.User" resultType="com.cxy.community.entity.User">
+		SELECT * FROM User WHERE account = #{account,jdbcType=VARCHAR}
+	</select>
+
+    <delete id="removeUser" parameterType="com.cxy.community.entity.User">
+		delete from User where id = #{id,jdbcType=VARCHAR}
+	</delete>
+
+    <insert id="addUser" parameterType="com.cxy.community.entity.User">
+        insert into User
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            name,account,password,avatar,phone,email,introduce,birthday
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id, jdbcType=VARCHAR},
+            </if>
+            #{name, jdbcType=VARCHAR},
+            #{account, jdbcType=VARCHAR},
+            #{password, jdbcType=VARCHAR},
+            #{avatar, jdbcType=VARCHAR},
+            #{phone, jdbcType=VARCHAR},
+            #{email, jdbcType=VARCHAR},
+            #{introduce, jdbcType=VARCHAR},
+            #{birthday, jdbcType=VARCHAR}
+        </trim>
+    </insert>
+
+    <update id="changeUser" parameterType="com.cxy.community.entity.User">
+        update User
+        <trim prefix="set" suffixOverrides=",">
+            name = #{name, jdbcType=VARCHAR},
+            account = #{account, jdbcType=VARCHAR},
+            password = #{password, jdbcType=VARCHAR},
+            avatar= #{avatar, jdbcType=VARCHAR},
+            phone = #{phone, jdbcType=VARCHAR},
+            email = #{email, jdbcType=VARCHAR},
+            introduce = #{introduce, jdbcType=VARCHAR},
+            birthday = #{birthday, jdbcType=VARCHAR}
+        </trim>
+        where id = #{id, jdbcType=VARCHAR}
+    </update>
+
+    <select id="getAllUser" resultType="com.cxy.community.entity.User">
+		SELECT * FROM User
+	</select>
+
+    <update id="changePassword" parameterType="com.cxy.community.entity.User">
+        update User
+        <trim prefix="set" suffixOverrides=",">
+            password = #{password, jdbcType=VARCHAR}
+        </trim>
+        where id = #{id, jdbcType=VARCHAR}
+    </update>
+</mapper>

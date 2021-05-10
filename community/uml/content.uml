@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.cxy.community.controller.ContentController</OriginalElement>
+  <nodes>
+    <node x="166.5" y="266.0">com.cxy.community.controller.ContentController</node>
+    <node x="672.0" y="105.0">com.cxy.community.service.ContentService</node>
+    <node x="515.7142857142858" y="265.2857142857143">com.cxy.community.entity.Content</node>
+    <node x="-279.4999999999999" y="267.0">com.cxy.community.mapper.ContentMapper</node>
+    <node x="753.0" y="0.0">org.springframework.stereotype.Service</node>
+    <node x="-179.9999999999999" y="107.0">org.apache.ibatis.annotations.Mapper</node>
+    <node x="0.0" y="0.0">org.springframework.web.bind.annotation.RequestMapping</node>
+    <node x="231.0" y="80.5">org.springframework.web.bind.annotation.RestController</node>
+    <node x="411.0" y="11.5">org.springframework.web.bind.annotation.CrossOrigin</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.cxy.community.mapper.ContentMapper" target="org.apache.ibatis.annotations.Mapper">
+      <point x="0.0" y="-120.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.cxy.community.controller.ContentController" target="org.springframework.web.bind.annotation.RequestMapping">
+      <point x="-96.33333333333331" y="-143.0" />
+      <point x="214.66666666666669" y="241.0" />
+      <point x="105.5" y="241.0" />
+      <point x="0.0" y="108.0" />
+    </edge>
+    <edge source="com.cxy.community.controller.ContentController" target="org.springframework.web.bind.annotation.CrossOrigin">
+      <point x="96.33333333333331" y="-143.0" />
+      <point x="407.3333333333333" y="241.0" />
+      <point x="519.0" y="241.0" />
+      <point x="0.0" y="96.5" />
+    </edge>
+    <edge source="com.cxy.community.controller.ContentController" target="org.springframework.web.bind.annotation.RestController">
+      <point x="0.0" y="-143.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="com.cxy.community.service.ContentService" target="org.springframework.stereotype.Service">
+      <point x="0.0" y="-143.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8" x="422.23214285714266" y="344.03571428571416" />
+  <SelectedNodes>
+    <node>com.cxy.community.controller.ContentController</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

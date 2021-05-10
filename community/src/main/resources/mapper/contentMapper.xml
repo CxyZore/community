@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cxy.community.mapper.ContentMapper">
+    <resultMap type="com.cxy.community.entity.Content" id="ContentMap">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="author" column="author" jdbcType="VARCHAR"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="hot" column="hot" jdbcType="INTEGER"/>
+        <result property="like" column="like" jdbcType="INTEGER"/>
+        <result property="collect" column="collect" jdbcType="INTEGER"/>
+        <result property="time" column="time" jdbcType="VARCHAR"/>
+        <result property="label" column="label" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getAllContent" resultType="com.cxy.community.entity.Content">
+		SELECT * FROM Content
+	</select>
+
+    <select id="getContent" resultType="com.cxy.community.entity.Content">
+		SELECT * FROM `content`
+        WHERE TYPE = #{type,jdbcType=VARCHAR}
+        AND CONCAT(`author`,`title`,`content`)
+        LIKE '%#{select, jdbcType=VARCHAR}%'
+	</select>
+
+    <delete id="removeContent" parameterType="com.cxy.community.entity.Content">
+		delete from Content where id = #{id,jdbcType=VARCHAR}
+	</delete>
+
+    <update id="changeContent" parameterType="com.cxy.community.entity.Content">
+        update Content
+        <trim prefix="set" suffixOverrides=",">
+            state = #{state, jdbcType=VARCHAR}
+        </trim>
+        where id = #{id, jdbcType=VARCHAR}
+    </update>
+
+
+    <resultMap type="com.cxy.community.entity.Label" id="LabelMap">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="introduce" column="introduce" jdbcType="VARCHAR"/>
+        <result property="hot" column="hot" jdbcType="INTEGER"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+        <result property="time" column="time" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="state" column="state" jdbcType="VARCHAR"/>
+        <result property="top" column="top" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="getAllLabel" resultType="com.cxy.community.entity.Label">
+		SELECT * FROM Label
+	</select>
+
+    <insert id="addLabel" parameterType="com.cxy.community.entity.Label">
+        insert into Label
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            name,introduce,hot,sort,time,type,state,top
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id, jdbcType=VARCHAR},
+            </if>
+            #{name, jdbcType=VARCHAR},
+            #{introduce, jdbcType=VARCHAR},
+            #{hot, jdbcType=INTEGER},
+            #{sort, jdbcType=INTEGER},
+            #{time, jdbcType=VARCHAR},
+            #{type, jdbcType=VARCHAR},
+            #{state, jdbcType=VARCHAR},
+            #{top, jdbcType=INTEGER}
+        </trim>
+    </insert>
+
+    <delete id="removeLabel" parameterType="com.cxy.community.entity.Label">
+		delete from Label where id = #{id,jdbcType=VARCHAR}
+	</delete>
+
+    <update id="changeLabel" parameterType="com.cxy.community.entity.Label">
+        update Label
+        <trim prefix="set" suffixOverrides=",">
+            name = #{name, jdbcType=VARCHAR},
+            introduce = #{introduce, jdbcType=VARCHAR},
+            hot = #{hot, jdbcType=INTEGER},
+            sort = #{sort, jdbcType=INTEGER},
+            time = #{time, jdbcType=VARCHAR},
+            type = #{type, jdbcType=VARCHAR},
+            state = #{state, jdbcType=VARCHAR},
+            top = #{top, jdbcType=INTEGER}
+        </trim>
+        where id = #{id, jdbcType=VARCHAR}
+    </update>
+
+<!--    todo: 有误？-->
+    <select id="toTop" parameterType="com.cxy.community.entity.Label">
+        update Label
+        <trim prefix="set" suffixOverrides=",">
+            top = 1
+        </trim>
+        where id = #{id, jdbcType=VARCHAR}
+	</select>
+
+
+</mapper>
